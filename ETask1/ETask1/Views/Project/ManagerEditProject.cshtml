@@ -1,0 +1,102 @@
+﻿@model ETask1.Models.Project
+
+@{
+    ViewBag.Title = "ManagerEditProject";
+}
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+@using (Html.BeginForm("ManagerEditProject", "Project", FormMethod.Post, new { id = "frmManagerEditProject" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.ProjectID)
+      @Html.HiddenFor(model => model.UserID)
+      @Html.HiddenFor(model => model.EstimatedStartDate)
+      @Html.HiddenFor(model => model.EstimatedDueDate)
+      @Html.HiddenFor(model => model.ProjectName)
+      @Html.HiddenFor(model => model.Description)
+      @Html.HiddenFor(model => model.ClientName)
+
+
+    <span class="cap">Manager Edit Project</span>
+					
+					<br><br>
+					
+					<div class="table no-border">
+					
+						<div class="row">
+                            <div class="table-cell label">Project Name:</div>
+                            <div class="table-cell">@Html.DisplayFor(model => model.ProjectName)
+                            @Html.ValidationMessageFor(model => model.ProjectName)</div>
+						</div>
+                        <div class="row">
+                            <div class="table-cell label">Description:</div>
+                            <div class="table-cell">@Html.DisplayFor(model => model.Description)
+                            @Html.ValidationMessageFor(model => model.Description)</div>
+						</div>
+                        <div class="row">
+                            <div class="table-cell label">Client Name:</div>
+                            <div class="table-cell">@Html.DisplayFor(model => model.ClientName)
+                            @Html.ValidationMessageFor(model => model.ClientName)</div>
+					    </div>
+                        <div class="row">
+                            <div class="table-cell label">Est Start Date:</div>
+                            <div class="table-cell">@Html.DisplayFor(model => model.EstimatedStartDate)
+                            @Html.ValidationMessageFor(model => model.EstimatedStartDate)</div>
+						</div>
+                        <div class="row">
+                            <div class="table-cell label">Est Due Date:</div>
+                            <div class="table-cell">@Html.DisplayFor(model => model.EstimatedDueDate)
+                            @Html.ValidationMessageFor(model => model.EstimatedDueDate)</div>
+						</div>
+				        <div class="row">
+				
+							<div class="table-cell label">Start Date:</div>
+					
+							<div class="table-cell">@Html.TextBoxFor(model => model.ActualStartDate, new { id = "txtActStartDate" })<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgStartDate"  class="red">@Html.ValidationMessageFor(model => model.ActualStartDate, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+						
+						<div class="row">
+				
+							<div class="table-cell label">Due Date:</div>
+					
+							<div class="table-cell">@Html.TextBoxFor(model => model.ActualDueDate, new { id = "txtActDueDate" })<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgDueDate"  class="red">@Html.ValidationMessageFor(model => model.ActualDueDate, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+						
+						<div class="row">
+						
+							<div class="table-cell label"><input type="submit" name="btnSubmit" value="Save"></div>
+							
+							<div class="table-cell"><input type="reset" name="btnCancel" value="Cancel"></div>
+					
+						</div>
+						
+					</div>
+					
+					<div id="mandatory">
+						<h4>Fields marked <span class="red">*</span> are mandatory.</h4>
+						</div>
+		
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

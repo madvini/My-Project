@@ -1,0 +1,134 @@
+﻿@model ETask1.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+@using (Html.BeginForm("Edit","User",FormMethod.Post)) {
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.UserName)
+    @Html.HiddenFor(model => model.UserID)
+    @Html.HiddenFor(model => model.PhoneNo)
+    @Html.HiddenFor(model => model.Email)
+    @Html.HiddenFor(model => model.Password)
+    @Html.HiddenFor(model => model.DOJ)
+    <input type="hidden" value="@Model.Password" name="ConfirmPassword" />
+							
+
+    <span class="cap">Edit User</span>
+					
+					<br><br>
+					
+					<div class="table no-border">
+					
+						<div class="row">
+						
+							<div class="table-cell label">Username:</div>
+							
+                            @Html.DisplayFor(model => model.UserName)
+                            @Html.ValidationMessageFor(model => model.UserName)
+							
+							
+						</div>
+						
+						<div class="row">
+						
+							<div class="table-cell label">E-mail:</div>
+                               @Html.DisplayFor(model => model.Email)
+							
+							
+						</div>
+						
+						<div class="row">
+						
+							<div class="table-cell label">Phone No:</div>
+                               @Html.DisplayFor(model => model.PhoneNo)
+							
+							
+								
+						</div>
+						
+						<div class="row">
+						
+							<div class="table-cell label">Department:</div>
+							
+							<div class="table-cell">
+       
+       
+                          @Html.DropDownList("DepartmentID", null,"", new { id = "ddlDepartment" })
+	
+								
+									
+							</div>
+								
+						</div>
+						
+						<div class="row">
+								
+							<div class="table-cell label">Designation:</div>
+								
+							<div class="table-cell">
+									@Html.DropDownList("DesignationID", null,"", new { id = "ddlDesignation" })
+								
+										
+							</div>
+									
+						</div>
+						
+						<div class="row">
+								
+							<div class="table-cell label">User Type:</div>
+								
+							<div class="table-cell">
+								@Html.DropDownListFor(model => model.UserType, new[]{
+            new SelectListItem(){Text="--Select--"},
+            new SelectListItem(){Text="admin"},
+            new SelectListItem(){Text="employee"},
+            new SelectListItem(){Text="manager"}})
+            @Html.ValidationMessageFor(model => model.UserType)	
+								
+										
+							</div>	
+                            </div>
+                            <div class="row">
+                            	<div class="table-cell label">Status:</div>
+								
+							<div class="table-cell">
+								@Html.DropDownListFor(model => model.Status, new[]{
+            new SelectListItem(){Text="Select"},
+            new SelectListItem(){Text="Active"},
+            new SelectListItem(){Text="Inactive"}})
+            @Html.ValidationMessageFor(model => model.Status)	
+								
+										
+							</div>	
+						</div>
+                         						
+						
+						<div class="row">
+						
+							<div class="table-cell label"><input type="submit" name="btnSubmit" value="Save"></div>
+							
+							<div class="table-cell"><input type="reset" name="btnCancel" value="Cancel"></div>
+					
+						</div>
+						
+					</div>
+					 
+					 <div id="mandatory">
+						<h4>Fields marked <span class="red">*</span> are mandatory.</h4>
+						</div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

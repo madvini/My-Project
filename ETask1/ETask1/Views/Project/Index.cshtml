@@ -1,0 +1,110 @@
+﻿@model PagedList.IPagedList<ETask1.Models.Project>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+
+<span class="cap">Projects</span>
+					
+					<span class="right"><a href="@Url.Action("Create")"><img src="@Url.Content("~/Content/images/add-img.png")" width="35" height="35"></a></span>
+					
+					<br><br>
+					
+					<hr class="hrStyle"></hr>
+					
+					<table class="tblDemo" id="no-more-tables">
+			
+						<tr>
+			
+							
+							<th>Project ID</th>
+							<th>Project Name</th>
+							
+							<th>Client Name</th>
+							
+							<th>Start Date</th>
+							
+							<th>Due Date</th>
+							
+							<th></th>
+				
+						</tr>
+						
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="@Url.Action("Details", new { id=item.ProjectID })">@Html.DisplayFor(modelItem => item.ProjectID)</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedDueDate)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ActualStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualDueDate)
+        </td>*@
+        <td>
+        <a href="@Url.Action("Edit", new { id = item.ProjectID })">
+        <img src="@Url.Content("~/Content/images/edit-img.jpg")" width="25" height="25"></a>
+        <a id="addUser" href="@Url.Action("AddUserProject", new { id = item.ProjectID })">
+        <img src="@Url.Content("~/Content/images/adduser-img.png")" width="25" height="25"></a>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })*@
+        </td>
+    </tr>
+}
+<tr>
+<td id="pagelist" colspan="6"><center>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+     
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { page = 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1 })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw(" ");
+        @:< Prev
+    }
+     
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw(" ")
+        @:>>
+    }
+</center></td> 
+</tr>
+
+</table>

@@ -1,0 +1,72 @@
+﻿@model ETask1.Models.Department
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+@using (Html.BeginForm("Edit", "Department", FormMethod.Post, new { id = "frmEditDepartment" }))
+{
+    @Html.ValidationSummary(true)
+
+    
+     @Html.HiddenFor(model => model.DepartmentID)
+
+    
+    <span class="cap">Edit Department</span>
+					
+					<br><br>
+					
+					<div class="table no-border">
+					
+						<div class="row">
+						
+							<div class="table-cell label">Name:</div>
+							
+							<div class="table-cell"> @Html.TextBoxFor(model => model.DepartmentName)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgName"  class="red">@Html.ValidationMessageFor(model => model.DepartmentName, "", new { @class = "red" })</div>
+							
+							</div>
+							
+						</div>
+
+                        @*<div class="row">
+						
+							<div class="table-cell label">Head:</div>
+							
+							<div class="table-cell"> @Html.TextBoxFor(model => model.DepartmentHead)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgName"  class="red">@Html.ValidationMessageFor(model => model.DepartmentHead, "", new { @class = "red" })</div>
+							
+							</div>
+							
+						</div>*@
+						
+                        <div class="row">
+						
+							<div class="table-cell label"><input type="submit" name="btnSubmit" value="Save"></div>
+							
+							<div class="table-cell"><input type="reset" name="btnCancel" value="Cancel"></div>
+					
+						</div>
+						
+					</div>
+					
+					<div id="mandatory">
+						<h4>Fields marked <span class="red">*</span> are mandatory.</h4>
+						</div>
+		
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

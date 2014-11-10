@@ -1,0 +1,124 @@
+﻿@model ETask1.Models.Project
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+
+@using (Html.BeginForm("Create", "Project", FormMethod.Post, new { id = "frmAddProject" }))
+{
+    @Html.ValidationSummary(true)
+
+    <span class="cap">Add Project</span>
+					
+					<br><br>
+		
+					<div class="table no-border">
+					
+						<div class="row">
+				
+							<div class="table-cell label">Name:</div>
+					
+							<div class="table-cell">@Html.EditorFor(model=>model.ProjectName)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgName"  class="red">@Html.ValidationMessageFor(model => model.ProjectName, "", new {@class="red" })</div>
+								
+							</div>
+					
+						</div>
+						
+						<div class="row">
+				
+							<div class="table-cell label">Description:</div>
+					
+							<div class="table-cell">@Html.TextAreaFor(model=>model.Description)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgDescription"  class="red">@Html.ValidationMessageFor(model => model.Description, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+						
+						<div class="row">
+				
+							<div class="table-cell label">Client Name:</div>
+					
+							<div class="table-cell">@Html.EditorFor(model=>model.ClientName)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgClientName"  class="red">@Html.ValidationMessageFor(model => model.ClientName, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+						
+						<div class="row">
+				
+							<div class="table-cell label">Project Manager:</div>
+					
+							<div class="table-cell">
+
+                            @Html.DropDownList("UserID", @ViewBag.UserID as SelectList, "--Select--", new { id = "ddlProjectManager" })
+                          
+					
+								<span class="red">*</span>
+								
+								<div class="table-cell lo" id="msgProjectManager"  class="red">@Html.ValidationMessageFor(model => model.ProjectManager, "", new { @class = "red" })</div>
+						
+							</div>
+					
+						</div>
+						
+						<div class="row">
+				
+							<div class="table-cell label">Start Date:</div>
+					
+							<div class="table-cell">@Html.TextBoxFor(model => model.EstimatedStartDate, new { id = "txtStartDate" })<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgStartDate"  class="red">@Html.ValidationMessageFor(model => model.EstimatedStartDate, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+						
+						<div class="row">
+				
+							<div class="table-cell label">Due Date:</div>
+					
+							<div class="table-cell">@Html.TextBoxFor(model => model.EstimatedDueDate, new { id = "txtDueDate" })<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgDueDate"  class="red">@Html.ValidationMessageFor(model => model.EstimatedDueDate, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+                        <input type="hidden" name="ActualStartDate" value="@DateTime.Now" />
+                        <input type="hidden" name="ActualDueDate" value="@DateTime.Now" />
+						
+						<div class="row">
+				
+							<div class="table-cell label"><input type="submit" name="btnSubmit" value="Save"></div>
+					
+						</div>
+						
+					</div>
+					
+					<div id="mandatory">
+						<h4>Fields marked <span class="red">*</span> are mandatory.</h4>
+						</div>
+				
+				
+		
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

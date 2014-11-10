@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ETask1.Models.User>
+
+@{
+    ViewBag.Title = "AddUserProject";
+}
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+@using (Html.BeginForm())
+{
+<span class="cap">Add Users</span>
+					<br /><br />
+                        <table class="tblDemo" id="no-more-tables">
+					        <tr>
+						       <th></th>
+			                    <th>Name</th>
+								<th>Designation</th>
+								<th>Email</th>
+					            <th>Phone No</th>
+							</tr>
+
+          @foreach (var item in Model)
+          {
+           <tr>
+                <td><input type="checkbox" name="chkUser" id="chkUser" value="@item.UserID"></td>
+                <td>@item.UserName</td>
+                <td>@item.Designation.Title</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNo</td>
+           </tr>		
+	      }
+</table>
+            <div class="table-cell">
+				<input type="submit" name="btnAdd" id="btnAdd" value="Add">
+				<span class="table-cell lo" id="msgUser"  class="red"></span>
+	        </div>
+}

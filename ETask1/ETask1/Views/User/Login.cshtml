@@ -1,0 +1,55 @@
+﻿@model ETask1.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <span class="cap">User Account</span>
+					
+    <div id="innerContainer">
+        <hr class="hrStyle"></hr>
+        <div class="table no-border login">
+            <div class="caption">
+                Login</div>
+            <div class="row">
+                <div class="table-cell lo ">
+                    UserName:</div>
+                <div class="table-cell lo">
+                    <input type="text" name="Username" id="txtUsername"><span class="red">*</span></div>
+                <div class="table-cell lo" id="msgUsername" class="red">@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "red" })</div>
+            </div>
+            <div class="row">
+                <div class="table-cell lo ">
+                    Password:</div>
+                <div class="table-cell lo">
+                    <input type="password" name="Password" id="txtPassword"><span class="red">*</span></div>
+                <div class="table-cell lo" id="msgPassword" class="red">@Html.ValidationMessageFor(model => model.Password, "", new { @class = "red" })</div>
+            </div>
+            <span class="red">@ViewBag.message</span>
+            <div class="row">
+                <div class="table-cell button">
+                    <input type="submit" name="btnSubmit" value="Login"></div>
+            </div>
+            <div id="mandatory">
+                Fields marked <span class="red">*</span> are mandatory.
+            </div>
+        </div>
+        <div id="desc">
+            Task management is the process of managing tasks. It involves planning, testing,
+            tracking and reporting. Task management can help either individuals achieve goals,
+            or groups of individuals collaborate and share knowledge for the accomplishment
+            of collective goals.Task management may form part of project management and process
+            management and can serve as the foundation for efficient workflow in an organisation.
+        </div>
+    </div>
+
+    
+}
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

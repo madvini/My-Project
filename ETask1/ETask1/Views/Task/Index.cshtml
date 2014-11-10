@@ -1,0 +1,114 @@
+﻿@model PagedList.IPagedList<ETask1.Models.Task>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+
+<form name="frmTasks" id="frmTasks">
+    <span class="ddl">
+		Status: <select name="ddlStatus" id="ddlStatus">
+                    <option value="">--Select--</option>
+				    <option value="New">New</option>
+					<option value="In Progress">In Progress</option>
+					<option value="Resolved">Resolved</option>
+					<option value="Closed">Closed</option>
+                    
+				</select>
+	</span>
+	<span class="ddl">
+          Assignee: @Html.DropDownList("AssignedTo", "--Select--")
+	</span>
+	<span class="date">
+		From:  <input type="text" name="txtFromDate" id="txtFromDate">
+	</span>	
+	<span class="date">
+		To:  <input type="text" name="txtToDate" id="txtToDate">
+	</span>	
+	<span class="show">
+		<input type="button" name="btnShow" id="btnShow" value="Show">
+	</span>
+	<span>
+		<div  class="message1" id="msgFromDate"  class="red"></div>
+	</span>
+     <input type="hidden" id="projectID" value="@ViewBag.Projid" />
+	<span class="cap">Tasks</span>
+	<span class="right"><a href="@Url.Action("Create")"></a></span>
+	<br><br>
+	<hr class="hrStyle"></hr>
+    <div id="tblStatusList">
+   
+	<table class ="tblDemo tblTask1" id="no-more-tables">		
+		<tr>
+			<th>Task ID</th>
+			<th>Subject</th>
+			<th>Start Date</th>
+			<th>Priority</th>
+			<th>Due Date</th>
+			@*<th></th>*@
+		</tr>	
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="@Url.Action("Details","Task", new { id=item.TaskID })">@Html.DisplayFor(modelItem => item.TaskID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)   
+        </td>
+       @* <td>
+            <a href="@Url.Action("Edit","Task",new { id=item.TaskID })">
+            <img src="@Url.Content("~/Content/images/edit-img.jpg")" width="25" height="25"></a>
+        </td>*@
+    </tr>
+}
+<tr>
+<td id="pagelist" colspan="6"><center>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+     
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { page = 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1 })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw(" ");
+        @:< Prev
+    }
+     
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1 })
+        @Html.Raw(" ");
+        @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw(" ")
+        @:>>
+    }
+</center></td> 
+</tr>
+
+</table>
+</div>
+</form>

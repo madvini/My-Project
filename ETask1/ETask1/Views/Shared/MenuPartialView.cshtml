@@ -1,0 +1,16 @@
+﻿@{
+    var user =(ETask1.Models.User)Session["user"];
+    if(user.UserType=="admin")
+    {
+        @Html.Partial("AdminMenu");
+    }
+    else if(user.UserType=="manager")
+    {
+        @Html.Partial("ManagerMenu");
+    }
+    else
+    {
+        @Html.Partial("UserMenu");
+    }
+   
+}

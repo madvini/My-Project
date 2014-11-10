@@ -1,0 +1,182 @@
+﻿@model ETask1.Models.User
+
+@{
+    ViewBag.Title = "Create";
+}
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+
+ @*function for calender control in NewUser Page*@
+<script type="text/javascript">
+
+$(document).ready(function () {
+  
+        $('#txtDoj').datepick({ dateFormat: 'mm/dd/yyyy' });
+    });
+</script>
+@using (Html.BeginForm("Create", "User", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+    <span class="cap">New User</span>
+					
+					<br><br>
+		
+					<div class="table no-border">
+				
+						<div class="row">
+				
+							<div class="table-cell label">UserName:</div>
+					
+							<div class="table-cell">@Html.EditorFor(Model=>Model.UserName)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgUsername"  class="red">  @Html.ValidationMessageFor(model => model.UserName, "", new {@class="red"})</div>
+								
+							</div>
+					
+						</div>
+				
+						<div class="row">
+				
+							<div class="table-cell label">Password:</div>
+					
+							<div class="table-cell">@Html.EditorFor(Model=>Model.Password)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgPassword"  class="red">  @Html.ValidationMessageFor(model => model.Password, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+                        <div class="row">
+				
+							<div class="table-cell label">Confirm Password:</div>
+					
+							<div class="table-cell">@Html.EditorFor(Model=>Model.ConfirmPassword)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgPassword"  class="red">  @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+				
+						<div class="row">
+				
+							<div class="table-cell label">E-mail:</div>
+					
+							<div class="table-cell">@Html.EditorFor(Model=>Model.Email)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgEmail"  class="red">  @Html.ValidationMessageFor(model => model.Email, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+				
+						<div class="row">
+				
+							<div class="table-cell label">Phone No:</div>
+					
+							<div class="table-cell">@Html.EditorFor(Model=>Model.PhoneNo)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgPhone"  class="red">  @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+				
+						<div class="row">
+				
+							<div class="table-cell label">Department:</div>
+					
+							<div class="table-cell">
+
+                             @Html.DropDownList("DepartmentID", @ViewBag.DepartmentID as SelectList, "--Select--", new { id = "ddlDepartment" })
+
+
+                           
+					
+								<span class="red">*</span>
+								
+								<div class="table-cell lo" id="msgDepartment"  class="red">  @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "red" })</div>
+						
+							</div>
+					
+						</div>
+				
+						<div class="row">
+				
+							<div class="table-cell label">Designation:</div>
+					
+							<div class="table-cell">
+
+                             @Html.DropDownList("DesignationID", @ViewBag.DesignationID as SelectList, "--Select--", new { id = "ddlDesignation" })
+
+                            
+
+                        
+					
+								<span class="red">*</span>
+								
+								<div class="table-cell lo" id="msgDesignation"  class="red"> @Html.ValidationMessageFor(model => model.DesignationID, "", new { @class = "red" })</div>
+						
+							</div>
+					
+						</div>
+				
+						<div class="row">
+				
+							<div class="table-cell label">Usertype:</div>
+					
+							<div class="table-cell">
+					
+								@Html.DropDownListFor(model => model.UserType, new[]{
+            new SelectListItem(){Text="--Select--", Value=""},
+            new SelectListItem(){Text="Admin", Value="admin"},
+            new SelectListItem(){Text="Employee",Value="employee"},
+            new SelectListItem(){Text="Manager",Value="manager"}}, new { id = "ddlUsertype" })<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgUsertype"  class="red"> @Html.ValidationMessageFor(model => model.UserType, "", new { @class = "red" })</div>
+						
+							</div>
+					
+						</div>
+				
+						<div class="row">
+				
+							<div class="table-cell label">DOJ:</div>
+					
+							<div class="table-cell">
+					
+								@Html.TextBoxFor(Model => Model.DOJ, new { id = "txtDoj" })<span class="red">*</span>
+								
+								<div class="table-cell lo" id="msgDoj"  class="red"> @Html.ValidationMessageFor(model => model.DOJ, "", new { @class = "red" })</div>
+								
+							</div>
+						
+						</div>
+					
+						<div class="row">
+				
+							<div class="table-cell label"><input type="submit" name="btnSubmit" id="btnNewEmployee" value="Save"></div>
+					
+						</div>
+
+					</div>
+					
+					<div id="mandatory">
+					
+						<h4>Fields marked <span class="red">*</span> are mandatory.</h4>
+						
+					</div>
+				
+				
+		
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+

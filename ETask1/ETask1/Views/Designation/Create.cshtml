@@ -1,0 +1,52 @@
+﻿@model ETask1.Models.Designation
+
+@{
+    ViewBag.Title = "Create";
+}
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+@using (Html.BeginForm("Create", "Designation", FormMethod.Post, new { id = "frmNewDesignation" }))
+{
+    @Html.ValidationSummary(true)
+
+    <span class="cap">New Designation</span>
+					
+					<br><br>
+		
+					<div class="table no-border">
+					
+						<div class="row">
+				
+							<div class="table-cell label">Title:</div>
+					
+							<div class="table-cell">@Html.EditorFor(model=>model.Title)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgName"  class="red">@Html.ValidationMessageFor(model => model.Title, "", new { @class = "red" })</div>
+								
+							</div>
+					
+						</div>
+						
+						
+						
+						<div class="row">
+				
+							<div class="table-cell label"><input type="submit" name="btnSubmit" value="Save"></div>
+					
+						</div>
+						
+					</div>
+					
+					<div id="mandatory">
+						<h4>Fields marked <span class="red">*</span> are mandatory.</h4>
+						</div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

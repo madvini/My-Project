@@ -1,0 +1,88 @@
+﻿@model ETask1.Models.Task
+
+@{
+    ViewBag.Title = "TaskDetails";
+}
+
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+<span class="cap">Task Details</span>
+					
+					<br><br>
+					
+					<div class="table no-border">
+					
+						<div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.Project.ProjectName):</div>
+                            @Html.DisplayFor(model => model.Project.ProjectName)
+                        </div>
+                        <div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.Subject):</div>
+                            @Html.DisplayFor(model => model.Subject)
+                        </div>
+                        <div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.StartDate):</div>
+                            @Html.DisplayFor(model => model.StartDate)
+                        </div>
+                        <div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.Priority):</div>
+                            @Html.DisplayFor(model => model.Priority)
+                        </div>
+                        
+                        <div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.DueDate):</div>
+                           @Html.DisplayFor(model => model.DueDate)
+                        </div>
+                        <div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.Description):</div>
+                           @Html.DisplayFor(model => model.Description)
+                        </div>
+                        <div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.File):</div>
+                           @if (Model.File != null)
+                           {
+                            <a href="@Url.Action("DownloadDoc", "Task",new { id = Model.TaskID })">@Html.DisplayFor(model => model.File)</a>
+                           }
+                           else
+                           {
+                               <div class="table-cell">Sorry no Files Available</div> 
+                           }
+                        </div>
+                        <div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.PercentageCompleted):</div>
+                            @Html.DisplayFor(model => model.PercentageCompleted)
+                        </div>
+                        <div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.Status):</div>
+                            @Html.DisplayFor(model => model.Status)
+                        </div>
+                        <div class="row">
+						
+							<div class="table-cell label">@Html.DisplayNameFor(model => model.Watchers):</div>
+                             @if (@ViewBag.Watchers.Count>0)
+                             {
+                            <div class="table-cell">@foreach (var r in ViewBag.Watchers)
+                                                    {
+                                @r.User.UserName<br />
+                                                    }
+                           </div>
+                             }
+                             else
+                             {
+                                 <div class="table-cell">Sorry no Watchers Available</div> 
+                             }
+                        </div>
+                    </div>

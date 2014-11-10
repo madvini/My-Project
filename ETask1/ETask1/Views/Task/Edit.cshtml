@@ -1,0 +1,114 @@
+﻿@model ETask1.Models.Task
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+     @Html.HiddenFor(model => model.TaskID)
+      @Html.HiddenFor(model => model.Priority)
+       @Html.HiddenFor(model => model.StartDate)
+        @Html.HiddenFor(model => model.Subject)
+        @Html.HiddenFor(model => model.ProjectID)
+        @Html.HiddenFor(model => model.AssignedTo)
+        @Html.HiddenFor(model => model.DueDate)
+        @Html.HiddenFor(model => model.File)
+
+    
+    
+    <span class="cap">Edit Task</span>
+					
+					<br><br>
+					
+					<div class="table no-border">
+					
+						<div id="r">
+								
+							<div class="row">
+									
+								<div class="table-cell label">@Html.LabelFor(model => model.TaskID):</div>
+									
+								<div class="table-cell">@Html.DisplayFor(model => model.TaskID)</div>
+									
+								<div class="table-cell label">@Html.LabelFor(model => model.Priority):</div>
+									
+								<div class="table-cell">@Html.DisplayFor(model => model.Priority)</div>
+								
+							</div>
+								
+							<div class="row">
+							
+								<div class="table-cell label"> @Html.LabelFor(model => model.StartDate):</div>
+									
+								<div class="table-cell"> @Html.DisplayFor(model => model.StartDate)</div>
+									
+								<div class="table-cell label">@Html.LabelFor(model => model.Subject):</div>
+									
+								<div class="table-cell"> @Html.DisplayFor(model => model.Subject)</div>
+									
+							</div>
+					
+							<div class="row">
+						
+								<div class="table-cell label">@Html.LabelFor(model => model.Status): </div>
+						
+								<div class="table-cell">
+								
+							        @Html.DropDownListFor(model => model.Status, new[]{
+                                        new SelectListItem(){Text="--Select--"},
+                                        new SelectListItem(){Text="New"},
+                                        new SelectListItem(){Text="In Progress"},
+                                        new SelectListItem(){Text="Resolved"},
+                                        new SelectListItem(){Text="Closed"}})
+                                        @Html.ValidationMessageFor(model => model.Status)	
+										
+									<div class="table-cell lo" id="msgStatus"  class="red">@Html.ValidationMessageFor(model => model.Status, "", new { @class = "red" })</div>
+								
+								</div>
+									
+								<div class="table-cell label">@Html.LabelFor(model => model.PercentageCompleted):</div>
+					
+								<div class="table-cell"> @Html.EditorFor(model => model.PercentageCompleted)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgCompleted"  class="red">@Html.ValidationMessageFor(model => model.PercentageCompleted, "", new { @class = "red" })</div>
+								
+								</div>
+					
+							</div>
+							
+							<div class="row">
+				
+								<div class="table-cell label">@Html.LabelFor(model => model.Description):</div>
+					
+								<div class="table-cell">@Html.TextAreaFor(model => model.Description)<span class="red">*</span>
+							
+									<div class="table-cell lo" id="msgDescription"  class="red">@Html.ValidationMessageFor(model => model.Description, "", new { @class = "red" })</div>
+								
+								</div>
+					
+							</div>
+						
+							<div class="row">
+						
+								<div class="table-cell label"><input type="submit" name="btnSubmit" value="Save"></div>
+							
+								<div class="table-cell"><input type="reset" name="btnCancel" value="Cancel"></div>
+					
+							</div>
+						
+						</div>
+						
+					</div>
+					
+					<div id="mandatory">
+						<h4>Fields marked <span class="red">*</span> are mandatory.</h4>
+						</div>
+}		

@@ -1,0 +1,119 @@
+﻿@model ETask1.Models.Task
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+
+@using (Html.BeginForm("Create", "Task", FormMethod.Post, new { id = "frmAddTask", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    
+    <span class="cap">New Task</span>
+		<br><br>
+		<div class="table no-border">
+			<div class="row">
+                <div class="table-cell label">Project Name:</div>
+                <div class="table-cell">
+                     @ViewBag.ProjectName
+                     @Html.ValidationMessageFor(model => model.Project.ProjectName)
+                </div>
+			</div>
+			<div class="row">
+			    <div class="table-cell label">Subject:</div>
+				<div class="table-cell">
+                    @Html.EditorFor(model=>model.Subject)<span class="red">*</span>
+				    <div class="table-cell lo" id="msgSubject"  class="red">
+                        @Html.ValidationMessageFor(model => model.Subject, "", new {@class="red" })
+                    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="table-cell label">Start Date:</div>
+				<div class="table-cell">
+                    @Html.TextBoxFor(model => model.StartDate, new { id = "txtStartDate" })
+					<div class="table-cell lo" id="msgStartDate"  class="red">
+                        @Html.ValidationMessageFor(model => model.StartDate, "", new {@class="red" })
+                    </div>
+				</div>
+			</div>
+		    <div class="row">
+			    <div class="table-cell label">Priority:</div>
+				<div class="table-cell">
+                    @Html.DropDownListFor(model => model.Priority, new[]{
+                        new SelectListItem(){Text="--Select--", Value=""},
+                        new SelectListItem(){Text="Normal"},
+                        new SelectListItem(){Text="High"},
+                        new SelectListItem(){Text="Urgent"}})
+                    <span class="red">*</span>
+					<div class="table-cell lo" id="msgPriority"  class="red">
+                        @Html.ValidationMessageFor(model => model.Priority, "", new {@class="red" })
+                    </div>
+				</div>
+			</div>
+			<div class="row">
+			    <div class="table-cell label">Assignee:</div>
+				<div class="table-cell">
+                    @Html.DropDownList("AssignedTo", "--Select--")
+                    <span class="red">*</span>
+				    <div class="table-cell lo" id="msgAssignee"  class="red">
+                         @Html.ValidationMessageFor(model => model.AssignedTo, "", new {@class="red" })
+                    </div>
+				</div>
+			</div>
+			<div class="row">
+		        <div class="table-cell label">Due Date:</div>
+				<div class="table-cell">
+                    @Html.TextBoxFor(model => model.DueDate, new { id = "txtDueDate" })
+                    <span class="red">*</span>
+					<div class="table-cell lo" id="msgDueDate"  class="red">@Html.ValidationMessageFor(model => model.DueDate, "", new {@class="red" })</div>
+				</div>
+			</div>
+			<div class="row">
+			    <div class="table-cell label">Description:</div>
+		        <div class="table-cell">
+                    @Html.TextAreaFor(model=>model.Description)
+                    <span class="red">*</span>
+					<div class="table-cell lo" id="msgDescription"  class="red">
+                        @Html.ValidationMessageFor(model => model.Description, "", new {@class="red" })
+                   </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="table-cell label">File:</div>
+				<div class="table-cell"><input type="file" name="File" id="file"></div>
+			</div>	
+            <div class="row">
+				<div class="table-cell label">Watchers:</div>
+                <div class="table-cell">
+                    @foreach (var watcher in ViewBag.AssignedTo)
+                    {
+                        <input type="checkbox" class="chkBox" name="chkWatchers" id='@watcher.Value' value='@watcher.Value' />@watcher.Text
+                    }
+                    <div class="table-cell lo" id="msgWatchers"  class="red">
+                        @Html.ValidationMessageFor(model => model.Watchers, "", new {@class="red" })
+                    </div>
+                </div>
+            </div>
+			<input type="hidden" name="PercentageCompleted" value="00.00" />
+            <input type="hidden" name="Status" value="New" />
+            <input type="hidden" name="ProjectID" value="ProjectID" />
+            <div class="row">
+				<div class="table-cell label"><input type="submit" name="btnSubmit" value="Save"></div>
+			</div>
+		</div>
+	    <div id="mandatory">
+            <h4>Fields marked <span class="red">*</span> are mandatory.</h4>
+		</div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

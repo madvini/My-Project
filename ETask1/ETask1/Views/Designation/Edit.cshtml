@@ -1,0 +1,58 @@
+﻿@model ETask1.Models.Designation
+
+@{
+    ViewBag.Title = "Edit";
+}
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+@using (Html.BeginForm("Edit", "Designation", FormMethod.Post, new { id = "frmEditDesignation" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.DesignationID)
+
+
+    <span class="cap">Edit Designation</span>
+					
+					<br><br>
+					
+					<div class="table no-border">
+					
+						<div class="row">
+						
+							<div class="table-cell label">Title:</div>
+							
+							<div class="table-cell"> @Html.TextBoxFor(model => model.Title)<span class="red">*</span>
+							
+								<div class="table-cell lo" id="msgName"  class="red">@Html.ValidationMessageFor(model => model.Title, "", new { @class = "red" })</div>
+							
+							</div>
+							
+						</div>
+
+                        
+						
+                        <div class="row">
+						
+							<div class="table-cell label"><input type="submit" name="btnSubmit" value="Save"></div>
+							
+							<div class="table-cell"><input type="reset" name="btnCancel" value="Cancel"></div>
+					
+						</div>
+						
+					</div>
+					
+					<div id="mandatory">
+						<h4>Fields marked <span class="red">*</span> are mandatory.</h4>
+						</div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

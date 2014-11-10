@@ -1,0 +1,71 @@
+﻿@model ETask1.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PhoneNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PhoneNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Department.DepartmentName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Department.DepartmentName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Designation.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Designation.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DOJ)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DOJ)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UserID }) |
+   @* @Html.ActionLink("Back to List", "Index")*@
+</p>

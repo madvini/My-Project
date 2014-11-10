@@ -1,0 +1,60 @@
+﻿@model ETask1.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+@section menu
+{
+  @Html.Partial("MenuPartialView")
+}
+
+<span class="cap">Project Details</span>
+					
+					<br><br>
+					
+					<div class="table no-border">
+					
+						<div class="row">
+						
+							<div class="table-cell label">Project ID:</div>
+                            @Html.DisplayFor(model => model.ProjectID)
+                        </div>
+
+                        <div class="row">
+						
+							<div class="table-cell label">ProjectName:</div>
+                            @Html.DisplayFor(model => model.ProjectName)
+                        </div>
+
+                        <div class="row">
+						
+							<div class="table-cell label">Description:</div>
+                            @Html.DisplayFor(model => model.Description)
+                        </div>
+
+                        <div class="row">
+						
+							<div class="table-cell label">Client Name:</div>
+                            @Html.DisplayFor(model => model.ClientName)
+                        </div>
+
+                        <div class="row">
+						
+							<div class="table-cell label">Project Manager:</div>
+                            @Html.DisplayFor(model => model.ProjectManager.UserName)
+                        </div>
+
+                        <div class="row">
+						
+							<div class="table-cell label">Start Date:</div>
+                            @Html.DisplayFor(model => model.EstimatedStartDate)
+                        </div>
+                        <div class="row">
+						
+							<div class="table-cell label">Due Date:</div>
+                            @Html.DisplayFor(model => model.EstimatedDueDate)
+                        </div>
+
+                        </div>

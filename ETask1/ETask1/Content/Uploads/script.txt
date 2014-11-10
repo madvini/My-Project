@@ -1,0 +1,4 @@
+var startDate = new Date(parseInt(value.StartDate.replace(/(^.*\()|([+-].*$)/g, '')));
+                        var dueDate = new Date(parseInt(value.DueDate.replace(/(^.*\()|([+-].*$)/g, '')));
+                        var correctstartdate = startDate.getMonth() + 1 + "/" + startDate.getDate() + "/" + startDate.getFullYear();
+                        var correctduedate = dueDate.getMonth() + 1 + "/" + dueDate.getDate() + "/" + dueDate.getFullYear();

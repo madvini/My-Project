@@ -1,0 +1,81 @@
+public IEnumerable<object> GetUsersByDepartment(string id)
+        {
+            var query = (from emp in GetUsers()
+                         where emp.DepartmentID == id
+                         where emp.Status == "Active"
+                         select new
+                         {
+                             UserId=emp.UserID,
+                             UserName=emp.UserName,
+                             Designation=emp.Designation.Title,
+                             UserType=emp.UserType,
+                             DOJ=emp.DOJ.Date.ToShortDateString(),
+                             Email=emp.Email,
+                             PhoneNo=emp.PhoneNo
+                         });
+            return query;
+        }
+
+
+
+
+
+ IEnumerable<object> GetUsersByDepartment(string id);
+
+
+
+
+
+  public JsonResult SearchUsersByDepartment(string id = null)
+        {
+            var users = userRepository.GetUsersByDepartment(id);
+            return Json(users.ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+ $("#ddlDepartment").change(function () {
+        $("#tblUserList").empty();
+        var deptid = $("#ddlDepartment").val();
+        var count = 0;
+        $.get('/User/SearchUsersByDepartment', { id: deptid }, function (data) {
+
+            var table = '<table class="tblDemo" id="no-more-tables"><tr><th>UserName</th><th>Designation</th><th>UserType</th><th>DOJ</th><th>Email</th><th>Phone No:</th><th></th></tr>';
+            $.each(data, function (key, value) {
+
+                table += '<tr><td>' + value.UserName + '</td><td>' + value.Designation + '</td><td>' + value.UserType + '</td><td>' + value.DOJ + '</td><td>' + value.Email + '</td><td>' + value.PhoneNo + '</td><td><a href=Edit/' + value.UserId + '><img src="/Content/images/edit-img.jpg" width="25" height="25"/></a></td></tr>';
+                count++;
+            });
+            if (count > 0) {
+                table += '</table>';
+            }
+            else {
+                var table = '<table class="tblDemo" id="no-more-tables"><tr><th></th><th>Sorry No records Found</th></tr></table>';
+            }
+            $("#tblUserList").html(table);
+            $("table.tblDemo tr:even").addClass("oddrow");
+        });
+    });
+});
+
+
+
+
+
+<div class="row">
+					
+						<div id="c">
+							
+							<div class="table-cell label"><font size="3">Search By Department :</font></div>
+							
+							<div class="table-cell">
+
+                        @Html.DropDownList("DepartmentID", @ViewBag.DepartmentID as SelectList, "--Select--", new { id = "ddlDepartment" })
+								
+							</div>	
+						
+						</div>	
+						
+					</div>

@@ -1,0 +1,370 @@
+
+body, div, ul, li, ol, span, p, h1, h2, h3, h4, h5, h6, 
+hr, table, th, tr, td, tbody, tfoot, caption, a, b, em, 
+form, label, i, option, strong, font, dl, dt, dd, iframe, 
+img, br, object, sub, sup {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    border: none;
+}
+ 
+a:active, a:focus {
+    outline: 0;
+}
+body{
+	font:normal 12px Arial;
+}
+#wrapper{
+	margin:0px auto;
+	width:90%;
+	border:1px solid #000;
+}
+#header
+{
+	background-image:url('../images/header-bg.jpg');
+    overflow: hidden;
+    padding: 0 0 16px;
+    width: 100%;
+}
+.logo img
+{
+	float:left;
+	padding:15px 0px 0px 10px;
+}
+.heading h1
+{
+	/*margin:0px 0px 0px 150px;*/
+	color:#FFFFFF;
+	padding:45px 0px 0px 10px;
+}
+#container
+{
+	padding:10px;
+	/*height:400px;*/
+	overflow: hidden;
+/*	background-color:#C0C0C0; */
+}
+#footer
+{
+	width:100%;
+	height:30px;
+	//background-image:url('../images/header-bg.jpg');
+	background-color:#001F17;
+	color:#FFFFFF;
+}
+#footer a
+{
+	float:right;
+	padding:7px 5px 0px 0px;
+	font-size:12px;
+	color:#FFFFFF;
+}
+#footer p
+{
+	float:left;
+	font-size:12px;
+	padding:6px 0px 0px 5px;
+}
+.caption,
+caption
+{
+/*	background-image:url('../images/caption.jpg');  */
+	font-size:20px;
+	text-align:left;
+	padding-left:3px;
+}
+
+/* table structure styles  */
+.table,
+.tblDemo
+{
+	width:100%;
+	background-image:url('../images/table-bg1.bmp');
+	text-align:left;
+	font:normal 14px Verdana, Arial, Helvetica, sans-serif;
+	/*border-collapse:collapse;	*/	
+}
+.tblDemo
+{
+	border:3px outset;
+}
+.tblDemo th
+{
+	font:bold 12px Verdana, Arial, Helvetica, sans-serif;
+	color:#990000;
+	padding:5px 10px;
+	background:#FCF9EC;
+	text-align:center;
+/*	border-right:2px #AD9437 solid;
+	border-bottom:1px #AD9437 solid; */
+}
+.tblDemo td
+{
+	padding:10px;
+}	
+/*	
+.tblDemo col.alignLeft{
+	background:#FCF9EC;
+	text-align:left;
+}	
+.tblDemo col.alighRight{
+	background:#FCF9EC;
+	text-align:right;
+}
+*/
+/*tableless style  */
+.caption
+{
+	display: table-caption;
+	margin-bottom:20px;
+}
+.table 
+{
+	display:table;
+}
+.row 
+{
+	display:table-row;
+}
+.table-cell 
+{
+	display:table-cell;
+	padding:10px;
+}
+.table-footer-group
+{
+	display:table-footer-group;
+}
+.label
+{
+	text-align: right;  
+} 
+.btnAlign
+{
+	padding-left:10%;
+}
+.no-border
+ {
+  /*border:1px solid #000;  */
+}
+.table-cell 
+{
+	border:0px none;
+}
+.red
+{
+  color:red;
+  font-size:11px;
+}
+ .login
+ {
+   width:30%;
+   height:70%;
+   float:left;
+   margin-left:50px;
+   border-right:1px ridge #508A70;
+  }
+  .lo
+  {
+  display:table-row;
+ }
+ 
+ #desc
+ {
+    float:left;
+	height:200px;
+	padding:50px;
+	width:40%;
+	margin:0px 0px 0px 20px;
+	letter-spacing:1px;
+}
+#innerContainer
+{
+    margin:30px 0px 50px;
+	background-image:url('../images/table-bg1.bmp');
+	height:270px;
+}
+.hrStyle
+{
+	width:100%;
+	height:5px;
+	background-image:url('../images/caption-bg.jpg');
+}
+.cap
+{
+    padding:80px 0px 0px 25px;
+	color:#177F75;
+	font-size:22px;
+}
+.oddrow
+{
+	background:#FFF;
+}
+.right
+{
+	float:right;
+	padding-right:20px;
+}
+.ddl,.date,.show
+{
+	 padding:80px 0px 0px 25px;
+}
+.newrow
+{
+	//text-align:center;
+	display:none;
+	margin-left:100px;
+}	
+#r
+{
+	margin-left:150px;
+}		
+.message
+{
+	padding:10px 0px 0px 190px;
+}
+.message1
+{
+	padding:10px 0px 0px 350px;
+}
+#display
+{
+	display:none;
+	position:absolute;
+	left:10px;
+	top:190px;
+	z-index:1;
+}
+.tblEmpList
+{
+	margin-left:80px;
+}
+.tblEmpList td
+{
+	padding:10px;	
+}
+.tbl2,.tbl3,.tbl4,.tblTask2,.tblTask3,.tblTask4
+{
+	display:none;
+}
+#c
+{
+	margin-left:280px;
+}	
+.head
+{
+	//background-image:url('../images/table-bg.jpg');
+	background-color:white;
+	margin-left:200px;
+	border:1px solid black;
+}
+
+#mandatory
+{
+	margin-left:10px;
+	margin-top:10px;
+	
+}
+	
+/*Media screen*/
+@media screen and (max-width:600px)
+{
+	#container
+	{
+		height:auto;
+	}
+	#paraSpan
+	{
+		width:auto;
+		height:auto;
+		float:none;
+	}
+	img{max-width:100%;}
+}
+
+@media screen and (max-width:350px)
+{
+	#container
+	{
+		height:auto;
+	}
+	#paraSpan
+	{
+		width:auto;
+		height:auto;
+		float:none;
+		margin:5px;
+	}
+	img{max-width:100%;}
+	
+	div h2{margin-top:70px;}
+	.table-cell {
+	display: table-row;
+	padding:2px;
+	
+	}
+	h1{font-size:15px;}
+	.label{text-align: left; }
+}
+
+/*table resize*/
+
+    @media only screen and (max-width: 350px)
+	{
+		/* Force table to not be like tables anymore */
+		#no-more-tables table,
+		#no-more-tables thead,
+		#no-more-tables tbody,
+		#no-more-tables th,
+		#no-more-tables td,
+		#no-more-tables tr {
+		display: block;
+		}
+		 
+		/* Hide table headers (but not display: none;, for accessibility) */
+		#no-more-tables thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+		}
+		#no-more-tables th{display: none;} 
+		#no-more-tables tr { border: 1px solid #ccc; }
+		 
+		#no-more-tables td {
+		/* Behave like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+		white-space: normal;
+		text-align:left;
+		}
+		 
+		#no-more-tables td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+		text-align:left;
+		font-weight: bold;
+		}
+		/* #no-more-tables td img{display:none;}*/
+		/*
+		Label the data
+		*/
+		#no-more-tables td:before { content: attr(data-title); }
+		/*	td:nth-of-type(1):before { content: "UserName"; }
+			td:nth-of-type(2):before { content: "Designation"; }
+			td:nth-of-type(3):before { content: "UserType"; }
+			td:nth-of-type(4):before { content: "DOJ"; }
+			td:nth-of-type(5):before { content: "Email"; }
+			td:nth-of-type(6):before { content: "Phone No:"; }
+			
+			/*td:nth-of-type(9):before { content: "Edit/Delete"; }*/
+	}
